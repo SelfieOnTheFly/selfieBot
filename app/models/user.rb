@@ -10,11 +10,6 @@
 #  is_welcomed :bool
 #
 
-Dir["../brokers/*.rb"].each {|file|
-  require_relative file
-  puts file
-} #Non c'est pas sale putain
-
 class User < ActiveRecord::Base
   include Filterable
 
@@ -30,7 +25,7 @@ class User < ActiveRecord::Base
   after_save :call_broker
 
   def call_broker
-    TaskBroker.new.on_user_changed self
+    ::TaskBroker.new.on_user_changed self
   end
 
 end
