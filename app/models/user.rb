@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   after_save :call_broker
 
   def call_broker
-    TaskBroker.on_user_changed
+    TaskBroker.new.on_user_changed self
   end
 
 end
