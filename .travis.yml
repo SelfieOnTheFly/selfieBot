@@ -8,3 +8,6 @@ script: bundle exec rspec spec
 addons:
   code_climate:
     repo_token: 22976f714398ffd830e8bc1c6336a17ff78e0d538d7fe570693304e793cbb8e3
+
+notifications:
+  slack: bsselfie:fR9aRPgbERdnYSP0xGmBg3IK
