@@ -18,3 +18,5 @@
 
 # RubyMine
 .idea
+
+*.env
