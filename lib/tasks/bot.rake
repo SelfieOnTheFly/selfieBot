@@ -30,6 +30,6 @@ namespace :bot do
 
   desc 'Pourrir Damien pour les tests'
   task :destroy_thedamfr => :environment do
-    User.find_by_tw_handle('TheDamFr')
+    User.find_by_tw_handle('TheDamfr').delete
   end
 end
