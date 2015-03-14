@@ -6,5 +6,8 @@ class WelcomeUserJob < ActiveJob::Base
     $twitter.direct_message('Bienvenue sur Selfie On The Fly !')
     $twitter.direct_message('Nous allons configurer ton compte ensemble')
     $twitter.direct_message('A tout moment tu peux repondre "skip" pour passer à la question suivante')
+    user.is_welcomed = true
+
+    user.save
   end
 end
