@@ -11,7 +11,13 @@
 #
 
 class User < ActiveRecord::Base
+  include Filterable
 
+  scope :tw_id, -> (tw_id) { where tw_id: tw_id }
+  scope :is_welcomed, -> (is_welcomed) { where is_welcomed: is_welcomed }
 
+  def self.allow_filterable_params
+    [:tw_id, :is_welcomed]
+  end
 
 end
