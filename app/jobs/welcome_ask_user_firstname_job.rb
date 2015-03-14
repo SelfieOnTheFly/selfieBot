@@ -6,4 +6,5 @@ class WelcomeAskUserFirstnameJob < ActiveJob::Base
     $twitter.create_direct_message(user.tw_handle, 'Quel est ton prénom ?')
 
   end
+
 end
