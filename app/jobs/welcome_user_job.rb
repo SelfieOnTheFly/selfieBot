@@ -10,6 +10,7 @@ class WelcomeUserJob < ActiveJob::Base
     end
     client.follow(twitt_handle)
     client.direct_message('Bienvenue sur Selfie On The Fly !')
-    client.direct_message('Veux-tu configuer ton compte avec moi ?')
+    client.direct_message('Nous allons configurer ton compte ensemble')
+    client.direct_message('A tout moment tu peux repondre "skip" pour passer à la question suivante')
   end
 end
