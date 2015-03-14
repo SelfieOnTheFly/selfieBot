@@ -2,15 +2,9 @@ class WelcomeUserJob < ActiveJob::Base
   queue_as :default
 
   def perform(twitt_handle)
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['CONSUMER_KEY']
-      config.consumer_secret     = ENV['CONSUMER_SECRET']
-      config.access_token        = ENV['ACCESS_TOKEN']
-      config.access_token_secret = ENV['ACCESS_TOKEN_SECRETx']
-    end
-    client.follow(twitt_handle)
-    client.direct_message('Bienvenue sur Selfie On The Fly !')
-    client.direct_message('Nous allons configurer ton compte ensemble')
-    client.direct_message('A tout moment tu peux repondre "skip" pour passer à la question suivante')
+    $twitter.follow(twitt_handle)
+    $twitter.direct_message('Bienvenue sur Selfie On The Fly !')
+    $twitter.direct_message('Nous allons configurer ton compte ensemble')
+    $twitter.direct_message('A tout moment tu peux repondre "skip" pour passer à la question suivante')
   end
 end
