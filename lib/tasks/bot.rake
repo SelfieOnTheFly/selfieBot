@@ -27,4 +27,9 @@ namespace :bot do
       puts 'Rate limit exceeded'
     end
   end
+
+  desc 'Pourrir Damien pour les tests'
+  task :destroy_thedamfr => :environment do
+    User.find_by_tw_handle('thedamfr').delete
+  end
 end
