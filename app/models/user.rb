@@ -22,4 +22,10 @@ class User < ActiveRecord::Base
     [:tw_id, :is_welcomed]
   end
 
+  after_save :call_broker
+
+  def call_broker
+    TaskBroker.on_user_changed
+  end
+
 end
