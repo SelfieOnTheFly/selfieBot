@@ -7,7 +7,7 @@ class TaskBroker
   end
 
   def welcome_user(user)
-    put "WelcomeUserJob queued"
+    puts "WelcomeUserJob queued"
     WelcomeUserJob.perform_later user
   end
 

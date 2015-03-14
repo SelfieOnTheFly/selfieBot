@@ -10,6 +10,11 @@
 #  is_welcomed :bool
 #
 
+Dir["../brokers/*.rb"].each {|file|
+  require_relative file
+  puts file
+} #Non c'est pas sale putain
+
 class User < ActiveRecord::Base
   include Filterable
 
