@@ -13,6 +13,8 @@
 class User < ActiveRecord::Base
   include Filterable
 
+  validates :tw_id, uniqueness: true
+
   scope :tw_id, -> (tw_id) { where tw_id: tw_id }
   scope :is_welcomed, -> (is_welcomed) { where is_welcomed: is_welcomed }
 

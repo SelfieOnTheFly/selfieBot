@@ -16,7 +16,7 @@ namespace :bot do
       new_ids  = followers_ids - known_ids
 
       new_ids.each do |id|
-        twitter_user = (followers.to_h[:users].select { |user| user[:id] == id }).first
+        twitter_user = (followers.to_h[:users].select { |user| user[:id].to_s == id }).first
 
         created_user = User.create(:tw_id => twitter_user[:id_str], :tw_handle => twitter_user[:screen_name])
         puts "Created #{created_user.tw_id} "
