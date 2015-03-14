@@ -38,6 +38,8 @@ gem 'dotenv-rails'
 gem 'rails-api'
 gem 'will_paginate'
 
+# For Sidekiq UI
+gem 'sinatra', :require => nil
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
