@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  is_welcomed :bool
+#  firstname   :string
 #
 
 require 'rails_helper'
