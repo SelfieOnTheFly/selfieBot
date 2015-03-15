@@ -15,11 +15,11 @@ EM.schedule do
   $stream.user do |event|
     case event
       when Twitter::Tweet
-        puts "It's a tweet!"
+        puts "Tweet : #{event.text}"
       when Twitter::DirectMessage
         ::TaskBroker.new.on_dm event
       when Twitter::Streaming::StallWarning
-        warn "Falling behind!"
+        warn 'Falling behind!'
     end
   end
 
