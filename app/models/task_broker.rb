@@ -44,10 +44,8 @@ class TaskBroker
     WelcomeAskUserMailJob.perform_later user
   end
 
-  def on_dm(event)
+  def broke_dm(message, sender)
 
-    sender = User.find_by_tw_id(event.sender.id.to_s)
-    if sender != nil
       if sender.is_welcomed and sender.firstname == nil
         if event.text.downcase.include? "skip"
           sender.firstname = "Skipped"
@@ -56,9 +54,7 @@ class TaskBroker
           sender.firstname = event.text.capitalize
           sender.save
         end
-      end
-
-      if sender.firstname != nil and sender.name == nil
+      elsif sender.firstname != nil and sender.name == nil
         if event.text.downcase.include? "skip"
           sender.name = "Skipped"
           sender.save
@@ -66,9 +62,7 @@ class TaskBroker
           sender.name = event.text.capitalize
           sender.save
         end
-      end
-
-      if sender.name != nil and sender.phone == nil
+      elsif sender.name != nil and sender.phone == nil
         if event.text.downcase.include? "skip"
           sender.phone = "Skipped"
           sender.save
@@ -76,9 +70,7 @@ class TaskBroker
           sender.phone = event.text
           sender.save
         end
-      end
-
-      if sender.phone != nil and sender.mail == nil
+      elsif sender.phone != nil and sender.mail == nil
         if event.text.downcase.include? "skip"
           sender.mail = "Skipped"
           sender.save
@@ -87,8 +79,12 @@ class TaskBroker
           sender.save
         end
       end
-    end
 
+  end
+
+  def on_dm(event)
+    puts "ReadDM queued"
+    ReadDM.perform_later event
   end
 
 end
