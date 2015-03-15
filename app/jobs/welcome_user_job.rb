@@ -3,8 +3,6 @@ class WelcomeUserJob < ActiveJob::Base
 
   def perform(user)
 
-    puts $twitter
-
     $twitter.follow(user.tw_handle)
     $twitter.create_direct_message(user.tw_handle, 'Bienvenue sur Selfie On The Fly !')
     $twitter.create_direct_message(user.tw_handle, 'Nous allons configurer ton compte ensemble')
