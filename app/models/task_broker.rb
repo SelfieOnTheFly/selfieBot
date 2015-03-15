@@ -47,35 +47,35 @@ class TaskBroker
   def broke_dm(message, sender)
 
       if sender.is_welcomed and sender.firstname == nil
-        if event.text.downcase.include? "skip"
+        if message.downcase.include? "skip"
           sender.firstname = "Skipped"
           sender.save
         else
-          sender.firstname = event.text.capitalize
+          sender.firstname = message.capitalize
           sender.save
         end
       elsif sender.firstname != nil and sender.name == nil
-        if event.text.downcase.include? "skip"
+        if message.downcase.include? "skip"
           sender.name = "Skipped"
           sender.save
         else
-          sender.name = event.text.capitalize
+          sender.name = message.capitalize
           sender.save
         end
       elsif sender.name != nil and sender.phone == nil
-        if event.text.downcase.include? "skip"
+        if message.downcase.include? "skip"
           sender.phone = "Skipped"
           sender.save
         else
-          sender.phone = event.text
+          sender.phone = message
           sender.save
         end
       elsif sender.phone != nil and sender.mail == nil
-        if event.text.downcase.include? "skip"
+        if message.downcase.include? "skip"
           sender.mail = "Skipped"
           sender.save
         else
-          sender.mail = event.text
+          sender.mail = message
           sender.save
         end
       end
