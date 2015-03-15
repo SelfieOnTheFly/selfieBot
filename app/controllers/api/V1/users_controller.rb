@@ -27,7 +27,7 @@ module Api
         @user = User.new(user_params)
 
         respond_to do |format|
-          if @notification.save
+          if @user.save
             format.json { render json: @user, status: :created }
           else
             format.json { render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity }
