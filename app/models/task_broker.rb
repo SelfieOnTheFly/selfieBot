@@ -10,7 +10,13 @@ class TaskBroker
     if user.firstname != nil and user.name == nil then
       welcome_ask_user_name user
     end
-    
+    if user.name != nil and user.phone == nil then
+      welcome_ask_user_phone user
+    end
+    if user.phone != nil and user.mail == nil then
+      welcome_ask_user_mail user
+    end
+
   end
 
   def welcome_user(user)
@@ -28,25 +34,56 @@ class TaskBroker
     WelcomeAskUserNameJob.perform_later user
   end
 
+  def welcome_ask_user_phone(user)
+    puts "WelcomeAskUserPhoneJob Queued"
+    WelcomeAskUserPhoneJob.perform_later user
+  end
+
+  def welcome_ask_user_mail(user)
+    puts "WelcomeAskUserMailJob Queued"
+    WelcomeAskUserMailJob.perform_later user
+  end
+
   def on_dm(event)
 
     sender = User.find_by_tw_id(event.sender.id.to_s)
     if sender != nil
       if sender.is_welcomed and sender.firstname == nil
         if event.text.downcase.include? "skip"
-          sender.firstname = ""
+          sender.firstname = "Skipped"
           sender.save
         else
           sender.firstname = event.text.capitalize
           sender.save
         end
       end
+
       if sender.firstname != nil and sender.name == nil
         if event.text.downcase.include? "skip"
-          sender.name = ""
+          sender.name = "Skipped"
           sender.save
         else
           sender.name = event.text.capitalize
+          sender.save
+        end
+      end
+
+      if sender.name != nil and sender.phone == nil
+        if event.text.downcase.include? "skip"
+          sender.phone = "Skipped"
+          sender.save
+        else
+          sender.phone = event.text
+          sender.save
+        end
+      end
+
+      if sender.phone != nil and sender.mail == nil
+        if event.text.downcase.include? "skip"
+          sender.mail = "Skipped"
+          sender.save
+        else
+          sender.mail = event.text
           sender.save
         end
       end
