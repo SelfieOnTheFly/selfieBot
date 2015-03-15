@@ -23,27 +23,27 @@ class TaskBroker
   end
 
   def welcome_user(user)
-    puts "WelcomeUserJob queued"
+    puts 'WelcomeUserJob queued'
     WelcomeUserJob.perform_later user
   end
 
   def welcome_ask_user_firstname(user)
-    puts "WelcomeAskUserFirstnameJob Queued"
+    puts 'WelcomeAskUserFirstnameJob Queued'
     WelcomeAskUserFirstnameJob.perform_later user
   end
 
   def welcome_ask_user_name(user)
-    puts "WelcomeAskUserNameJob Queued"
+    puts 'WelcomeAskUserNameJob Queued'
     WelcomeAskUserNameJob.perform_later user
   end
 
   def welcome_ask_user_phone(user)
-    puts "WelcomeAskUserPhoneJob Queued"
+    puts 'WelcomeAskUserPhoneJob Queued'
     WelcomeAskUserPhoneJob.perform_later user
   end
 
   def welcome_ask_user_mail(user)
-    puts "WelcomeAskUserMailJob Queued"
+    puts 'WelcomeAskUserMailJob Queued'
     WelcomeAskUserMailJob.perform_later user
   end
 
@@ -55,32 +55,32 @@ class TaskBroker
   def broke_dm(message, sender)
 
       if sender.is_welcomed and sender.firstname == nil
-        if message.downcase.include? "skip"
-          sender.firstname = "Skipped"
+        if message.downcase.include? 'skip'
+          sender.firstname = 'Skipped'
           sender.save
         else
           sender.firstname = message.capitalize
           sender.save
         end
       elsif sender.firstname != nil and sender.name == nil
-        if message.downcase.include? "skip"
-          sender.name = "Skipped"
+        if message.downcase.include? 'skip'
+          sender.name = 'Skipped'
           sender.save
         else
           sender.name = message.capitalize
           sender.save
         end
       elsif sender.name != nil and sender.phone == nil
-        if message.downcase.include? "skip"
-          sender.phone = "Skipped"
+        if message.downcase.include? 'skip'
+          sender.phone = 'Skipped'
           sender.save
         else
           sender.phone = message
           sender.save
         end
       elsif sender.phone != nil and sender.mail == nil
-        if message.downcase.include? "skip"
-          sender.mail = "Skipped"
+        if message.downcase.include? 'skip'
+          sender.mail = 'Skipped'
           sender.save
         else
           sender.mail = message
@@ -91,7 +91,7 @@ class TaskBroker
   end
 
   def on_dm(event)
-    puts "ReadDM queued"
+    puts 'ReadDM queued'
     ReadDM.perform_later(event.text,event.sender.id)
   end
 
