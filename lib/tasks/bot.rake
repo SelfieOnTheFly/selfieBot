@@ -44,7 +44,7 @@ namespace :bot do
         when Twitter::DirectMessage
           ::TaskBroker.new.on_dm event
         when Twitter::Streaming::StallWarning
-          warn "Falling behind!"
+          warn 'Falling behind!'
       end
     end
   end
