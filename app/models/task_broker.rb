@@ -84,7 +84,7 @@ class TaskBroker
 
   def on_dm(event)
     puts "ReadDM queued"
-    ReadDM.perform_later event
+    ReadDM.perform_later(event.text,event.sender.id)
   end
 
 end
