@@ -10,6 +10,7 @@ class TaskBroker
     if user.firstname != nil and user.name == nil then
       welcome_ask_user_name user
     end
+    
   end
 
   def welcome_user(user)

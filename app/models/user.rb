@@ -10,6 +10,8 @@
 #  is_welcomed :bool
 #  firstname   :string
 #  name        :string
+#  phone       :string
+#  mail        :string
 #
 
 class User < ActiveRecord::Base
