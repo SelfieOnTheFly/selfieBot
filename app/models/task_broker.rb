@@ -16,6 +16,9 @@ class TaskBroker
     if user.phone != nil and user.mail == nil then
       welcome_ask_user_mail user
     end
+    if user.phone != nil and user.mail != nil then
+      welcome_conclude user
+    end
 
   end
 
@@ -42,6 +45,11 @@ class TaskBroker
   def welcome_ask_user_mail(user)
     puts "WelcomeAskUserMailJob Queued"
     WelcomeAskUserMailJob.perform_later user
+  end
+
+  def welcome_conclude(user)
+    puts "WelcomeConcludeJob Queued"
+    WelcomeConcludeJob.perform_later user
   end
 
   def broke_dm(message, sender)

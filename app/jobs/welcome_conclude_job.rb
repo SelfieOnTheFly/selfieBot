@@ -1,4 +1,4 @@
-class WelcomeUserJob < ActiveJob::Base
+class WelcomeConcludeJob < ActiveJob::Base
   queue_as :default
 
   def perform(user)
