@@ -9,6 +9,7 @@
 #  updated_at  :datetime         not null
 #  is_welcomed :bool
 #  firstname   :string
+#  name        :string
 #
 
 class User < ActiveRecord::Base
