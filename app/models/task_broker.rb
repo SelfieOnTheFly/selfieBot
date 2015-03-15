@@ -22,7 +22,7 @@ class TaskBroker
   def on_dm(event)
 
     sender = User.find_by_tw_id(event.sender.id.to_s)
-    if sender.is_welcomed and sender.firstname == nil
+    if sender != nil and sender.is_welcomed and sender.firstname == nil
       if event.text.downcase.include? "skip"
         sender.firstname = ""
         sender.save
